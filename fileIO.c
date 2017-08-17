@@ -92,7 +92,7 @@ char *doSave(char *filename) {
         n++;
         choices = realloc(choices, n*sizeof(char *));
         choices[n-1] = malloc(256);
-        sprintf(choices[n-1], d->d_name);
+        snprintf(choices[n-1], 256, "%s", d->d_name);
       }
       closedir(dir);
       
@@ -178,7 +178,7 @@ void load(char *filename)
       n++;
       choices = realloc(choices, n*sizeof(char *));
       choices[n-1] = malloc(256);
-      sprintf(choices[n-1], d->d_name);
+      snprintf(choices[n-1], 256, "%s", d->d_name);
     }
     closedir(dir);
     
