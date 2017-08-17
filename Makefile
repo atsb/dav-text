@@ -17,12 +17,8 @@ dav: $(OBJECTS)
 
 install:
 	install -D dav $(DESTDIR)$(prefix)/bin/dav
-<<<<<<< HEAD
 	mkdir -p $(DESTDIR)$(prefix)/share/man/man1
 	install -D dav.1.gz $(DESTDIR)$(prefix)/share/man/man1/
-=======
-	install -D dav.1.gz $(DESTDIR)$(prefix)/share/man/man1
->>>>>>> 90a4a6aa050a88ce9ad3675a4e58f751c298f38d
 
 uninstall:
 	rm $(DESTDIR)$(prefix)/bin/dav
