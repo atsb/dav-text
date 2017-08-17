@@ -1,0 +1,41 @@
+v0.8.5
+Fixed -l# command-line option to work correctly toward the end of the file.
+Yet more accuracy fixes regarding cursor movement in the presence of tabs.
+Yet more display fixes regarding terminal window resizing.
+
+v0.8.4
+Fixed up the quicksort implementation; it was not 100% accurate before.
+Fixed window-resizing code. It should be 100% accurate now.
+Removed a redundant free() that sometimes segfaulted.
+Updated the version number. v0.8.3 thought it was v0.8.2
+
+v0.8.3
+Buffer-closing-related bugfixes.
+Dav will load up the first specified file (of several) instead of the last.
+
+v0.8.2
+Fixed an error where moving the cursor left off the top of the screen caused a freeze.
+Specifying multiple files at command line opens them into separate buffers.
+Load/save menu dialogue is sorted by filename.
+Type of sort is selectable in ~/.davrc under "optimize".
+Closing a buffer changes the buffer filename to the empty string.
+Closing a buffer when other buffers are open will no longer sometimes close Dav.
+Fixed minor memory leaks.
+Fixed a freeze that sometimes occurred when searching/replacing.
+
+v0.8.1
+Added SmartCursor functionality.
+Minor code optimizations.
+Window resizing bugfix.
+Lots of code cleanups.
+Separated code into separate files.
+
+v0.8.0
+Some code cleanups.
+Added menu load/save interface.
+
+v0.7.6
+Added an option to the .davrc file to set the tab width. The default value is 8.
+
+v0.7.5
+Changed the way Undo works, made it more efficient and faster and more reliable.
