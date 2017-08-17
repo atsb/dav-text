@@ -1,3 +1,6 @@
+v0.8.6
+Updated Makefile with more strict compilation flags
+
 v0.8.5
 Fixed -l# command-line option to work correctly toward the end of the file.
 Yet more accuracy fixes regarding cursor movement in the presence of tabs.
