@@ -9,8 +9,8 @@ OBJECTS=main.o \
         undo.o \
         move.o
         
-CFLAGS+=-O3 -Wall
-LDFLAGS+=-lncurses -O3 -Wall
+CFLAGS+=-O3 -D_FORTIFY_SOURCE=2 -O1 -g -Wall -Wextra -Wpointer-arith -Wuninitialized -Wshadow -Winit-self -Wmissing-declarations -fomit-frame-pointer -Wformat -Wformat-security -Werror=format-security
+LDFLAGS+=-lncurses
 
 dav: $(OBJECTS) 
 	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(OBJECTS) -o dav
