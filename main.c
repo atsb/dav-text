@@ -1,5 +1,6 @@
 /*
 Copyright 2001-2003 David Gucwa
+Copyright 2017 Adam Bilbrough
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -37,7 +38,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 int maxY,maxX;
 int helpBarUpdate=0;
 
-char *version = "0.8.5";
+char *version = "0.8.6";
 
 /* Preferences and default values */
 int maxUndoLength = 500;
