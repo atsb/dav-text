@@ -17,9 +17,11 @@ dav: $(OBJECTS)
 
 install:
 	install -D dav $(DESTDIR)$(prefix)/bin/dav
+	install -D dav.1.gz $(DESTDIR)$(prefix)/share/man/man1
 
 uninstall:
 	rm $(DESTDIR)$(prefix)/bin/dav
+	rm $(DESTDIR)$(prefix)/share/man/man1/dav.1.gz
 
 clean:
 	-rm -rf dav core *.o tags
