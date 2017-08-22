@@ -38,8 +38,9 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 int maxY,maxX;
 int helpBarUpdate=0;
 
-char *version = "Dav - 0.8.6\n\nCopyright 2001-2003 David Gucwa\nCopyright 2017 Adam Bilbrough\n";
-
+char *version = "Dav - 0.8.6\n\nCopyright 2001-2003 David Gucwa\nCopyright 2017 Adam Bilbrough";
+char *license = "This program is free software under the GPL version 2 license.";
+                
 /* Preferences and default values */
 int maxUndoLength = 500;
 char undoEnabled=1;
@@ -267,8 +268,9 @@ void doArguments(int argc, char *argv[])
 
 void displayVersion()
 {
-  char text[30];
-  sprintf(text, "Dav version %s\n", version);
+  char text[120];
+  sprintf(text, "%s\n", version);
+  sprintf(text, "%s\n", license);
   quit(text);
 }
 
@@ -277,13 +279,14 @@ void displayHelp()
   char *c = getenv("HOME");
   int t;
   endwin();
-  printf("Dav v%s, written by David Gucwa\n",version);
+  printf("%s, written by David Gucwa and maintained by Adam Bilbrough\n",version);
   printf("Usage: dav [arguments] [FILENAME] [FILENAME] ...\n");
   printf("  where FILENAMEs, if specified, are the names of the files you wish to load.\n");
   printf("Arguments list:\n");
   printf("  --help : Display this help screen\n");
   printf("  --version: Display the version of Dav that you are running\n");
   printf("  -l#: Initialize Dav at a specific line number. (eg -l123)\n");
+  printf("  +#: Same as -l# but using nano style. (eg +42)\n");
   printf("Basic commands:\n");
   for(t=0;t<12;t++)
   {
