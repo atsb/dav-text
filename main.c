@@ -38,7 +38,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 int maxY,maxX;
 int helpBarUpdate=0;
 
-char *version = "0.8.6";
+char *version = "Dav - 0.8.7\n\nCopyright 2001-2003 David Gucwa\nCopyright 2017 Adam Bilbrough\n";
 
 /* Preferences and default values */
 int maxUndoLength = 500;
@@ -233,8 +233,8 @@ void doArguments(int argc, char *argv[])
   int x;
   char firstFile = 1;
   for(x=1;x<argc;x++)
-  {
-    if(argv[x][0]!='-') {
+  { /* For Debian issue #872848 ~Adam */
+    if(argv[x][0] != '-' || != '+') {
       /* Specifying a file name */
       if(!firstFile) {
         goToNextBuffer();
@@ -247,7 +247,8 @@ void doArguments(int argc, char *argv[])
         displayHelp();
       } else if(!strcmp(argv[x],"--version")) {
         displayVersion();
-      } else if(strstr(argv[x], "-l")!=NULL && isdigit(argv[x][2])) {
+        /* For Debian issue #872848 ~Adam */
+      } else if(strstr(argv[x], "-l" || "+") != NULL && isdigit(argv[x][2])) {
         gotoLine(atoi(&argv[x][2]));
       } else {
         /* Mistyped something */
