@@ -1,5 +1,6 @@
 v0.8.6
 Updated Makefile with more strict compilation flags
+Implemented +# lnumval arguments (like nano)
 
 v0.8.5
 Fixed -l# command-line option to work correctly toward the end of the file.
