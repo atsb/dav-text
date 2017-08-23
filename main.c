@@ -123,11 +123,13 @@ int main(int argc, char *argv[])
   intrflush(stdscr, FALSE);
   keypad(stdscr, TRUE);
   getmaxyx(stdscr,maxY,maxX);
-  for(x=0;x<maxX;x++) {
-    for(y=0;y<maxY;y++) {
-      mvaddch(y,x,' ');
-      }
-     }
+  
+  for(x = 0; x< maxX; x++) {
+    for(y = 0; y< maxY; y++) {
+      mvaddch(y, x,' ');
+    }
+  }
+  
   move(0,0);
   lastDisplayed = (int *)malloc(maxY*sizeof(int));
   
@@ -368,7 +370,7 @@ void displayHelp()
   printf("  Ctrl-U : Erase whole line\n");
   printf("Personal options:\n");
   printf("  Located in %s/.davrc\n",c);
-  printf("Also edit %s/.davrc to customize function key bindings\n",c);
+  printf("  Edit %s/.davrc to customize function key bindings\n",c);
   initscr();
   quit("");
 }
