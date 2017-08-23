@@ -326,8 +326,8 @@ void displayHelp()
   int t;
   endwin();
   printf("%s\n",version);
-  printf("Usage: dav [arguments] [FILENAME] [FILENAME] ...\n");
-  printf("  where FILENAMEs, if specified, are the names of the files you wish to load.\n");
+  printf("Usage: dav [arguments] [FILENAME] [FILENAME] [LNUM] ...\n");
+  printf("  where FILENAMEs, if specified, are the names of the files you wish to load.\nThe + or -l arguments must be after the filename.");
   printf("Arguments list:\n");
   printf("  --help : Display this help screen\n");
   printf("  --version: Display the version of Dav that you are running\n");
