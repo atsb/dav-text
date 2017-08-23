@@ -16,6 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <ncurses.h>
@@ -62,8 +63,8 @@ int currentBufferNum = 0;
 
 int main(int argc, char *argv[])
 {
-  int x,y;
-  int keypress; 
+  int x, y, i;
+  int keypress;
 
   signal(2,sigcatch);
 
@@ -122,13 +123,23 @@ int main(int argc, char *argv[])
   intrflush(stdscr, FALSE);
   keypad(stdscr, TRUE);
   getmaxyx(stdscr,maxY,maxX);
-  for(x=0;x<maxX;x++)
-    for(y=0;y<maxY;y++)
+  for(x=0;x<maxX;x++) {
+    for(y=0;y<maxY;y++) {
       mvaddch(y,x,' ');
+      }
+     }
   move(0,0);
   lastDisplayed = (int *)malloc(maxY*sizeof(int));
-
-  if(argc>=2) doArguments(argc,argv);
+  
+  /* For Debian issue #872848 ~Adam */
+  for (i = 0; i < argc; i++) {
+  if (argv[i][0] == '-') {
+  	doArguments(argc,argv);
+  }
+  if (argv[i][0] == '+') {
+  	doAlternativeArguments(argc,argv);
+  }
+  }
 
   helpBar();
   showRow();
@@ -234,8 +245,46 @@ void doArguments(int argc, char *argv[])
   int x;
   char firstFile = 1;
   for(x=1;x<argc;x++)
-  { /* For Debian issue #872848 ~Adam */
-    if(argv[x][0] != '-' || != '+') {
+  {
+    if(argv[x][0] != '-') {
+      /* Specifying a file name */
+      if(!firstFile) {
+        goToNextBuffer();
+      }      
+      load(argv[x]);
+      firstFile = 0;
+    } else {
+      /* Option */
+      if(!strcmp(argv[x],"--help")) {
+        displayHelp();
+      } else if(!strcmp(argv[x],"--version")) {
+        displayVersion();
+        /* For Debian issue #872848 ~Adam */
+      } else if(strstr(argv[x], "-l") != NULL && isdigit(argv[x][2])) {
+        gotoLine(atoi(&argv[x][2]));
+      } else {
+        /* Mistyped something */
+        displayHelp();
+      }
+  }
+  }
+  
+  /* Go to first buffer */
+  while (currentBuffer != &buffers[0]) {
+    goToPrevBuffer();
+  }
+  
+  displayScreen();
+}
+
+/* For Debian issue #872848 ~Adam */
+void doAlternativeArguments(int argc, char *argv[])
+{
+ int x;
+  char firstFile = 1;
+  for(x=1;x<argc;x++)
+  {
+    if(argv[x][0] != '+') {
       /* Specifying a file name */
       if(!firstFile) {
         goToNextBuffer();
@@ -244,13 +293,8 @@ void doArguments(int argc, char *argv[])
       firstFile = 0;
     } else { 
       /* Option */
-      if(!strcmp(argv[x],"--help")) {
-        displayHelp();
-      } else if(!strcmp(argv[x],"--version")) {
-        displayVersion();
-        /* For Debian issue #872848 ~Adam */
-      } else if(strstr(argv[x], "-l" || "+") != NULL && isdigit(argv[x][2])) {
-        gotoLine(atoi(&argv[x][2]));
+      if(strstr(argv[x], "+") != NULL && isdigit(argv[x][1])) {
+        gotoLine(atoi(&argv[x][1]));
       } else {
         /* Mistyped something */
         displayHelp();
@@ -279,7 +323,7 @@ void displayHelp()
   char *c = getenv("HOME");
   int t;
   endwin();
-  printf("%s, written by David Gucwa and maintained by Adam Bilbrough\n",version);
+  printf("%s\n",version);
   printf("Usage: dav [arguments] [FILENAME] [FILENAME] ...\n");
   printf("  where FILENAMEs, if specified, are the names of the files you wish to load.\n");
   printf("Arguments list:\n");

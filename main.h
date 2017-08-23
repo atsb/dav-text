@@ -25,6 +25,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 char scrollDown();
 char scrollUp();
 void doArguments(int argc, char *argv[]);
+void doAlternativeArguments(int argc, char *argv[]);
 void quit(char *text);
 void displayHelp();
 void displayVersion();
