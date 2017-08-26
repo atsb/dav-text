@@ -9,7 +9,7 @@ OBJECTS=main.o \
         undo.o \
         move.o
         
-CFLAGS+=-O3 -D_FORTIFY_SOURCE=2 -O1 -g -Wall -Wextra -Wpointer-arith -Wuninitialized -Wshadow -Winit-self -Wmissing-declarations -fomit-frame-pointer -Wformat -Wformat-security -Werror=format-security
+CFLAGS+=-O3 -D_FORTIFY_SOURCE=2 -g -Wall -Wextra -Wpointer-arith -Wuninitialized -Wshadow -Winit-self -Wmissing-declarations -Wformat -Wformat-security -Werror=format-security
 LDFLAGS+=-lncurses -z now
 
 dav: $(OBJECTS) 

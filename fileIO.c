@@ -88,7 +88,11 @@ char *doSave(char *filename) {
       while(1)
       {
         d = readdir(dir);
-        if(d==NULL) break;
+        if(d==NULL)
+        {
+        	break;
+        	exit(EXIT_FAILURE);
+        }
         n++;
         choices = realloc(choices, n*sizeof(char *));
         choices[n-1] = malloc(256);
@@ -174,7 +178,11 @@ void load(char *filename)
     while(1)
     {
       d = readdir(dir);
-      if(d==NULL) break;
+      if(d==NULL)
+        {
+        	break;
+        	exit(EXIT_FAILURE);
+        }
       n++;
       choices = realloc(choices, n*sizeof(char *));
       choices[n-1] = malloc(256);
