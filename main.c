@@ -378,7 +378,7 @@ void displayHelp()
 void loadSettings()
 {
   int l;
-  char s[80];
+  char s[200];
   char home[80];
   char *r;
   char *c;
@@ -595,7 +595,7 @@ void addLineAfter(struct line *whichLine, char *data)
   whichLine->next = newLine;
   newLine->next = temp;
   newLine->prev = whichLine;
-  newLine->data = (unsigned char *)malloc(strlen(data));
+  newLine->data = (char *)malloc(strlen(data));
   strcpy(newLine->data, data);
   newLine->length = strlen(data);
   countTabs(newLine);
@@ -676,7 +676,7 @@ char positionUp(struct position *p)
 void connectLines(struct line *baseline)
 {
   struct line *l = baseline->next;
-  unsigned char *ptr = (unsigned char *)malloc(baseline->length + l->length);
+  char *ptr = (char *)malloc(baseline->length + l->length);
   memmove(ptr, baseline->data, baseline->length);
   memmove(ptr+baseline->length, l->data, l->length);
   free(baseline->data);
@@ -720,7 +720,7 @@ void countTabs(struct line *l)
 void determineCursX(struct position *p)
 {
   struct position temp;
-  unsigned char c;
+  char c;
   
   temp.l = p->l;
   temp.offset = 0;
@@ -741,7 +741,11 @@ void determineCursX(struct position *p)
 void logMsg(char *msg) {
   char text[256];
   sprintf(text, "echo \"%s\" >> log", msg);
-  system(text);
+  int system_return = system(text);
+  if(system_return)
+  {
+  	return;
+  }
 }
 
 void sigcatch() {
@@ -765,7 +769,7 @@ void radixSort(char **strings, int number) {
     }
     
     for(t=0; t<number; t++) {
-      int bucket = (int)((unsigned char)strings[t][radix]);
+      int bucket = (int)((char)strings[t][radix]);
       buckets[bucket] = realloc(buckets[bucket], (numberInBuckets[bucket] + 1)*sizeof(char *));
       buckets[bucket][numberInBuckets[bucket]] = strings[t];
       numberInBuckets[bucket]++;

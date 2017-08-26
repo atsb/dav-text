@@ -29,7 +29,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 void search()
 {
-  unsigned char *t;
+   char *t;
   int offset;
   struct line *l = *currentBuffer->currentLine;
   char down=1; //Whether or not the found word is below the current position
@@ -54,7 +54,7 @@ void search()
     offset = currentBuffer->cursor.offset + 1;
   }
   while (1) {
-    t = (unsigned char *)strstr(l->data + offset, currentBuffer->searchString);
+    t = ( char *)strstr(l->data + offset, currentBuffer->searchString);
     if (t!=NULL) break;
     offset = 0;
     l = l->next;
@@ -104,8 +104,8 @@ void replace()
 {
   static char replaceString[80];
   static char findString[80];
-  unsigned char *t;
-  int offset;
+   char *t;
+   int offset;
   struct line *l = *currentBuffer->currentLine;
   char down=1; //Whether or not the found word is below the current position
   char count=2;
@@ -122,7 +122,7 @@ void replace()
   offset = currentBuffer->cursor.offset + 1;
   while(1)
   {
-    t = (unsigned char *)strstr(l->data + offset, findString);
+    t = ( char *)strstr(l->data + offset, findString);
     if(t!=NULL) break;
     offset = 0;
     l = l->next;
@@ -182,7 +182,11 @@ void tryCompile()
   ungetch(' ');
   getch();
   if(strcmp(currentBuffer->fname, "")) save();
-  system("make 2>dav.err >/dev/null");
+  int feature_system_return = system("make 2>dav.err >/dev/null");
+  if(feature_system_return)
+  {
+  	return;
+  }
   fp = fopen("dav.err","r");
   fgetc(fp);
   if(feof(fp))
@@ -203,7 +207,11 @@ void tryCompile()
     helpBarUpdate = 1;
   }
   fclose(fp);
-  system("rm dav.err");
+  int feature_system_remove_return = system("rm dav.err");
+  if(feature_system_remove_return)
+  {
+  	return;
+  }
 }
 
 void gotoLine(int line)

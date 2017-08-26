@@ -1,3 +1,8 @@
+v0.8.7
+Fixed unsigned to signed integer comparisons
+Added return values for some calls
+Clarified help instructions
+
 v0.8.6
 Updated Makefile with more strict compilation flags
 Implemented +# lnumval arguments (like nano)

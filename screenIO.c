@@ -28,9 +28,9 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 void displayLine(int line, struct position *pos) {
   int ch;
-  unsigned char *data = pos->l->data + pos->offset;
+   char *data = pos->l->data + pos->offset;
   int length = pos->l->length;
-  unsigned char *end = pos->l->data + length;   
+   char *end = pos->l->data + length;   
   int screenX = 0;
   
   if(pos->l != currentBuffer->tail) {

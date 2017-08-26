@@ -30,8 +30,8 @@ void keyHit(int keypress, char undoNow)
   int t=0,t2=0;
   int x;
   static char ctrl=0;
-  unsigned char *ptr;
-  unsigned char **data;
+   char *ptr;
+   char **data;
 
   if(keypress==27) { 
     ctrl=3; 
@@ -272,7 +272,7 @@ void keyHit(int keypress, char undoNow)
 
       ptr = (*currentBuffer->currentLine)->data;
       memmove(ptr + currentBuffer->cursor.offset, ptr + currentBuffer->cursor.offset + 1, currentBuffer->cursor.l->length - currentBuffer->cursor.offset);
-      (*currentBuffer->currentLine)->data = (unsigned char *)realloc((*currentBuffer->currentLine)->data, (*currentBuffer->currentLine)->length);
+      (*currentBuffer->currentLine)->data = ( char *)realloc((*currentBuffer->currentLine)->data, (*currentBuffer->currentLine)->length);
 
       currentBuffer->lineUpdate = currentBuffer->cursor;
       currentBuffer->lineUpdate.lineNum = currentBuffer->cursor.cursY;
@@ -320,13 +320,13 @@ void keyHit(int keypress, char undoNow)
       addLineAfter(*currentBuffer->currentLine, "");
       x = (*currentBuffer->currentLine)->length;
 
-      ptr = (unsigned char *)malloc(x - currentBuffer->cursor.offset);
+      ptr = ( char *)malloc(x - currentBuffer->cursor.offset);
       memmove(ptr, (*currentBuffer->currentLine)->data + currentBuffer->cursor.offset, x - currentBuffer->cursor.offset);
       free((*currentBuffer->currentLine)->next->data);
       (*currentBuffer->currentLine)->next->data = ptr;
       (*currentBuffer->currentLine)->next->length = x - currentBuffer->cursor.offset;
 
-      (*currentBuffer->currentLine)->data = (unsigned char *)realloc((*currentBuffer->currentLine)->data, currentBuffer->cursor.offset + 1);
+      (*currentBuffer->currentLine)->data = ( char *)realloc((*currentBuffer->currentLine)->data, currentBuffer->cursor.offset + 1);
       (*currentBuffer->currentLine)->length = currentBuffer->cursor.offset + 1;
 
       (*currentBuffer->currentLine)->data[(*currentBuffer->currentLine)->length - 1] = '\n';
@@ -367,7 +367,7 @@ void keyHit(int keypress, char undoNow)
 
       (*currentBuffer->currentLine)->data = realloc((*currentBuffer->currentLine)->data, x + 1);
       memmove((*currentBuffer->currentLine)->data + currentBuffer->cursor.offset + 1, (*currentBuffer->currentLine)->data + currentBuffer->cursor.offset, x - currentBuffer->cursor.offset);
-      (*currentBuffer->currentLine)->data[currentBuffer->cursor.offset] = (unsigned char)keypress;
+      (*currentBuffer->currentLine)->data[currentBuffer->cursor.offset] = ( char)keypress;
 
       (*currentBuffer->currentLine)->length++;
       currentBuffer->cursor.offset++;
@@ -437,7 +437,6 @@ void listChoice(int n, char **choices, char *answer, char *message)
         newName[strlen(newName) - 1] = '\0';
     }
     else if(keypress == 338) { //PgDn
-      int t;
       focus = 0;
       for(t=0;t<maxY;t++) {
         if(selected < n-1) selected++;
@@ -446,7 +445,6 @@ void listChoice(int n, char **choices, char *answer, char *message)
       }
     }
     else if(keypress == 339) { //PgUp
-      int t;
       focus = 0;
       for(t=0;t<maxY;t++) {
         if(selected) selected--;

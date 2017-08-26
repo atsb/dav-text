@@ -19,24 +19,24 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #define structs_h
 
 struct line {
-  unsigned char *data;
-  unsigned int length;
+   char *data;
+   int length;
   struct line *next;
   struct line *prev;
-  unsigned char hasTabs;
+   char hasTabs;
 };
 
 struct position {
   struct line *l;
-  unsigned int offset;
-  unsigned int lineNum;
-  unsigned int cursX,cursY;
-  unsigned int wantCursX;
+   int offset;
+   int lineNum;
+   int cursX,cursY;
+   int wantCursX;
 };
 
 struct undoMove {
   /* Reverses some modification to a buffer */
-  unsigned int line, offset;
+   int line, offset;
   char c; /* What was added or removed */
 };
 
