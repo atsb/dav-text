@@ -1,5 +1,6 @@
 /*
 Copyright 2001-2003 David Gucwa
+Copyright 2017-2018 Adam Bilbrough
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -17,7 +18,6 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 #include <stdlib.h>
 #include <string.h>
-#include <ncurses.h>
 
 #include "features.h"
 #include "main.h"
@@ -104,8 +104,8 @@ void replace()
 {
   static char replaceString[80];
   static char findString[80];
-   char *t;
-   int offset;
+  char *t;
+  int offset;
   struct line *l = *currentBuffer->currentLine;
   char down=1; //Whether or not the found word is below the current position
   char count=2;

@@ -1,5 +1,6 @@
 /*
 Copyright 2001-2003 David Gucwa
+Copyright 2017-2018 Adam Bilbrough
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -15,7 +16,6 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
-#include <ncurses.h>
 #include <string.h>
 
 #include "screenIO.h"
@@ -134,59 +134,79 @@ void helpBar() {
   int t;
   displayBottomRow();
   
-  if(bottomRowToggle) {
-    strcpy(ptr,"F|");
-    ptr += 2;
+  if(bottomRowToggle)
+  {
     for(t=0;t<12;t++)
     {
-      if(t<=8)
-        *ptr++ = t + '1';
-      else
-      {
-        *ptr++ = '1';
-        *ptr++ = t + '1' - 10;
-      }
-      *ptr++ = ':';
-      if(Fn_ptr[t] == search) { 
-        strcpy(ptr, "Search");
-        ptr+=6; 
-      } else if(Fn_ptr[t] == save) {
-        strcpy(ptr, "Save");
-        ptr+=4; 
-      } else if(Fn_ptr[t] == saveAs) {
-        strcpy(ptr, "SaveAs");
-        ptr+=6; 
-      } else if(Fn_ptr[t] == askLoad) {
-        strcpy(ptr, "Load");
-        ptr+=4; 
-      } else if(Fn_ptr[t] == tryQuit) {
-        strcpy(ptr, "Quit");
-        ptr+=4; 
-      } else if(Fn_ptr[t] == Undo) {
-        strcpy(ptr, "Undo");
-        ptr+=4; 
-      } else if(Fn_ptr[t] == tryCompile) {
-        strcpy(ptr, "Compile");
-        ptr+=7; 
-      } else if(Fn_ptr[t] == toggleAutoIndent) { 
-        strcpy(ptr, "AutoIndent");
-        ptr+=10; 
-      } else if(Fn_ptr[t] == toggleBottomRow) { 
-        strcpy(ptr, "BottomRow");
+      if(Fn_ptr[t] == search) {
+        strcpy(ptr,KEY_F1);
+        ptr += 3;
+        strcpy(ptr,KEY_F1_TEXT);
         ptr+=9; 
-      } else if(Fn_ptr[t] == replace) { 
-        strcpy(ptr, "Replace");
+				
+      } else if(Fn_ptr[t] == save) {
+        strcpy(ptr,KEY_F2);
+        ptr += 3;
+        strcpy(ptr,KEY_F2_TEXT);
+        ptr+=12; 
+				
+      } else if(Fn_ptr[t] == saveAs) {
+        strcpy(ptr,KEY_F3);
+        ptr += 3;
+        strcpy(ptr,KEY_F3_TEXT);
+        ptr+=10; 
+				
+      } else if(Fn_ptr[t] == askLoad) {
+        strcpy(ptr,KEY_F4);
+        ptr += 3;
+        strcpy(ptr,KEY_F4_TEXT);
+        ptr+=12; 
+				
+      } else if(Fn_ptr[t] == tryQuit) {
+        strcpy(ptr,KEY_F5);
+        ptr += 3;
+        strcpy(ptr,KEY_F5_TEXT);
         ptr+=7; 
+				
+      } else if(Fn_ptr[t] == Undo) {
+        strcpy(ptr,KEY_F6);
+        ptr += 3;
+        strcpy(ptr,KEY_F6_TEXT);
+        ptr+=17; 
+				
+      } else if(Fn_ptr[t] == toggleAutoIndent) {
+        strcpy(ptr,KEY_F8);
+        ptr += 3;
+        strcpy(ptr,KEY_F8_TEXT);
+        ptr+=14;
+				
+      } else if(Fn_ptr[t] == tryCompile) {
+        strcpy(ptr,KEY_F9);
+        ptr += 3;
+        strcpy(ptr,KEY_F9_TEXT);
+        ptr+=10; 
+				
+      } else if(Fn_ptr[t] == toggleBottomRow) { 
+        strcpy(ptr,KEY_F10);
+        ptr += 4;
+        strcpy(ptr,KEY_F10_TEXT);
+        ptr+=18;
+				
+      } else if(Fn_ptr[t] == replace) { 
+        strcpy(ptr, "Replace ");
+        ptr+=8; 
+				
       } else if(Fn_ptr[t] == goToNextBuffer) { 
-        strcpy(ptr, "Next");
-        ptr+=4; 
+        strcpy(ptr, "Next ");
+        ptr+=9; 
+				
       } else if(Fn_ptr[t] == goToPrevBuffer) { 
-        strcpy(ptr, "Prev");
-        ptr+=4; 
+        strcpy(ptr, "Prev ");
+        ptr+=5; 
+				
       } else if(Fn_ptr[t] == nothing) { 
         ptr-=3; 
       }
-      *ptr++ = '|';
     }
     *ptr = '\0';
     mvaddnstr(maxY-1,0,c,maxX-1);

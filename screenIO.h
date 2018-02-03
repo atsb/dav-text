@@ -1,5 +1,6 @@
 /*
 Copyright 2001-2003 David Gucwa
+Copyright 2017-2018 Adam Bilbrough
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -25,5 +26,30 @@ void showRow();
 void helpBar();
 void displayBottomRow();
 void displayLine(int line, struct position *pos);
+
+/* 
+ * do not modify the whitespace in the defines
+ * the whitespace is used for padding the
+ * bottombar in the editor (helpbar).
+ */
+#define KEY_F1       "F1:"
+#define KEY_F2       "F2:"
+#define KEY_F3       "F3:"
+#define KEY_F4       "F4:"
+#define KEY_F5       "F5:"
+#define KEY_F6       "F6:"
+#define KEY_F8       "F8:"
+#define KEY_F9       "F9:"
+#define KEY_F10      "F10:"
+
+#define KEY_F1_TEXT  "Search | "
+#define KEY_F2_TEXT  "Save File | "
+#define KEY_F3_TEXT  "Save As | "
+#define KEY_F4_TEXT  "Load File | "
+#define KEY_F5_TEXT  "Quit | "
+#define KEY_F6_TEXT  "Undo Change | "
+#define KEY_F8_TEXT  "Auto Indent | "
+#define KEY_F9_TEXT  "Compile | "
+#define KEY_F10_TEXT "Bottom Row |"
 
 #endif

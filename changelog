@@ -1,3 +1,9 @@
+v0.8.8
+Rewrote helpbar in buffer (bottom bar in editor) to make it clear and clean
+Clarified some text to make it easier to understand
+Removed optimizing flag in the Makefile which caused crashes on some systems
+Moved LDFLAGS in the Makefile which caused link failures on some systems
+
 v0.8.7
 Fixed unsigned to signed integer comparisons
 Added return values for some calls

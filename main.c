@@ -1,6 +1,6 @@
 /*
 Copyright 2001-2003 David Gucwa
-Copyright 2017 Adam Bilbrough
+Copyright 2017-2018 Adam Bilbrough
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,7 +19,6 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <ncurses.h>
 #include <signal.h>
 #include <string.h>
 #include <ctype.h>
@@ -39,7 +38,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 int maxY,maxX;
 int helpBarUpdate=0;
 
-char *version = "Dav - 0.8.7\n\nCopyright 2001-2003 David Gucwa\nCopyright 2017 Adam Bilbrough";
+char *version = "Dav - 0.8.7\n\nCopyright 2001-2003 David Gucwa\nCopyright 2017-2018 Adam Bilbrough";
 char *license = "This program is free software under the GPL version 2 license.";
                 
 /* Preferences and default values */
@@ -176,7 +175,7 @@ void tryQuit()
     return;
   }
   displayBottomRow();
-  mvaddstr(maxY-1,0,"Save before quit? y/n/[C]");
+  mvaddstr(maxY-1,0,"Save before quitting? y/n/[C]");
   move(maxY-1,26);
   t = getch();
   mvaddch(maxY-1,26,' ');
@@ -201,7 +200,7 @@ void quit(char *text)
     if(t==currentBufferNum) continue;
     if(buffers[t].updated) {
       displayBottomRow();
-      mvaddstr(maxY-1,0,"One or more buffers have not been saved. Quit? y/[N]");
+      mvaddstr(maxY-1,0,"One or more buffers have not been saved. Really quit? y/[N]");
       t = getch();
       if(t=='y' || t=='Y') {
         break;
@@ -401,10 +400,12 @@ void loadSettings()
   //It's there, so read from it
   while(!feof(fp)) {
     fgets(s, 200, fp);
-    if(s[0]=='#') continue;
+    if(s[0]=='#')
+    	continue;
     r = strtok(s," =");    
     c = strtok(NULL," =");
-    if(c==NULL) continue;
+    if(c==NULL)
+    	continue;
     l = atoi(c);
     if(!strcmp(r,"Undo")) { undoEnabled = l; gotten|=1; }
     if(!strcmp(r,"UndoBuffer")) { maxUndoLength = l; gotten|=2; }

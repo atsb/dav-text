@@ -9,11 +9,11 @@ OBJECTS=main.o \
         undo.o \
         move.o
         
-CFLAGS+=-O3 -D_FORTIFY_SOURCE=2 -g -Wall -Wextra -Wpointer-arith -Wuninitialized -Wshadow -Winit-self -Wmissing-declarations -Wformat -Wformat-security -Werror=format-security
+CFLAGS+=-D_FORTIFY_SOURCE=2 -g -Wall -Wextra -Wpointer-arith -Wuninitialized -Wshadow -Winit-self -Wmissing-declarations -Wformat -Wformat-security -Werror=format-security
 LDFLAGS+=-lncurses -z now
 
 dav: $(OBJECTS) 
-	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(OBJECTS) -o dav
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(OBJECTS) $(LDFLAGS) -o dav
 
 install:
 	install -D dav $(DESTDIR)$(prefix)/bin/dav
