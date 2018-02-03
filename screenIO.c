@@ -142,55 +142,55 @@ void helpBar() {
         strcpy(ptr,KEY_F1);
         ptr += 3;
         strcpy(ptr,KEY_F1_TEXT);
-        ptr+=9; 
+        ptr+=7; 
 				
       } else if(Fn_ptr[t] == save) {
         strcpy(ptr,KEY_F2);
         ptr += 3;
         strcpy(ptr,KEY_F2_TEXT);
-        ptr+=12; 
+        ptr+=5; 
 				
       } else if(Fn_ptr[t] == saveAs) {
         strcpy(ptr,KEY_F3);
         ptr += 3;
         strcpy(ptr,KEY_F3_TEXT);
-        ptr+=10; 
+        ptr+=7; 
 				
       } else if(Fn_ptr[t] == askLoad) {
         strcpy(ptr,KEY_F4);
         ptr += 3;
         strcpy(ptr,KEY_F4_TEXT);
-        ptr+=12; 
+        ptr+=5; 
 				
       } else if(Fn_ptr[t] == tryQuit) {
         strcpy(ptr,KEY_F5);
         ptr += 3;
         strcpy(ptr,KEY_F5_TEXT);
-        ptr+=7; 
+        ptr+=5; 
 				
       } else if(Fn_ptr[t] == Undo) {
         strcpy(ptr,KEY_F6);
         ptr += 3;
         strcpy(ptr,KEY_F6_TEXT);
-        ptr+=17; 
+        ptr+=8; 
 				
       } else if(Fn_ptr[t] == toggleAutoIndent) {
         strcpy(ptr,KEY_F8);
         ptr += 3;
         strcpy(ptr,KEY_F8_TEXT);
-        ptr+=14;
+        ptr+=11;
 				
       } else if(Fn_ptr[t] == tryCompile) {
         strcpy(ptr,KEY_F9);
         ptr += 3;
         strcpy(ptr,KEY_F9_TEXT);
-        ptr+=10; 
+        ptr+=8; 
 				
       } else if(Fn_ptr[t] == toggleBottomRow) { 
         strcpy(ptr,KEY_F10);
         ptr += 4;
         strcpy(ptr,KEY_F10_TEXT);
-        ptr+=18;
+        ptr+=15;
 				
       } else if(Fn_ptr[t] == replace) { 
         strcpy(ptr, "Replace ");

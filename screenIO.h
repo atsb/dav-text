@@ -42,14 +42,14 @@ void displayLine(int line, struct position *pos);
 #define KEY_F9       "F9:"
 #define KEY_F10      "F10:"
 
-#define KEY_F1_TEXT  "Search | "
-#define KEY_F2_TEXT  "Save File | "
-#define KEY_F3_TEXT  "Save As | "
-#define KEY_F4_TEXT  "Load File | "
-#define KEY_F5_TEXT  "Quit | "
-#define KEY_F6_TEXT  "Undo Change | "
-#define KEY_F8_TEXT  "Auto Indent | "
-#define KEY_F9_TEXT  "Compile | "
-#define KEY_F10_TEXT "Bottom Row |"
+#define KEY_F1_TEXT  "Search|"
+#define KEY_F2_TEXT  "Save|"
+#define KEY_F3_TEXT  "SaveAs|"
+#define KEY_F4_TEXT  "Load|"
+#define KEY_F5_TEXT  "Quit|"
+#define KEY_F6_TEXT  "Undo|"
+#define KEY_F8_TEXT  "AutoIndent|"
+#define KEY_F9_TEXT  "Compile|"
+#define KEY_F10_TEXT "BottomRow|"
 
 #endif
