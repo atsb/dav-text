@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/atsb/dav-text.svg?branch=master)](https://travis-ci.org/atsb/dav-text)
+
 Welcome to DAV! (Dav Ain't Vi)
 
 Disclaimer:
