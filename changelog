@@ -1,3 +1,6 @@
+v0.8.9
+Cleaned up code to prevent some new warnings fro GCC8.
+
 v0.8.8
 Rewrote helpbar in buffer (bottom bar in editor) to make it clear and clean
 Clarified some text to make it easier to understand

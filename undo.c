@@ -1,6 +1,6 @@
 /*
 Copyright 2001-2003 David Gucwa
-Copyright 2017-2018 Adam Bilbrough
+Copyright 2017-2019 Adam Bilbrough
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
