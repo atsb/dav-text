@@ -164,7 +164,7 @@ void replace()
     keyHit(330, 0);
 
   //Add the replacestring
-  for(offset=0;offset<strlen(replaceString);offset++)
+  for(offset=0;(long unsigned int)offset<strlen(replaceString);offset++)
     keyHit(replaceString[offset], 0);
 
   currentBuffer->lineUpdate = currentBuffer->topLine;
