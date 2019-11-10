@@ -38,7 +38,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 int maxY,maxX;
 int helpBarUpdate=0;
 
-char *version = "Dav - 0.8.9\n\nCopyright 2001-2003 David Gucwa\nCopyright 2017-2019 Adam Bilbrough";
+char *version = "Dav - 0.9.0\n\nCopyright 2001-2003 David Gucwa\nCopyright 2017-2019 Adam Bilbrough";
 char *license = "This program is free software under the GPL version 2 license.";
                 
 /* Preferences and default values */
